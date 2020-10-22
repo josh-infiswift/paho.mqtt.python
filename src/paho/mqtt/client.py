@@ -2527,14 +2527,14 @@ class Client(object):
             if self._protocol == MQTTv5:
                 self._easy_log(
                     MQTT_LOG_DEBUG,
-                    "Sending PUBLISH (d%d, q%d, r%d, m%d), '%s', properties=%s, ... (%d bytes)",
-                    dup, qos, retain, mid, topic, properties, payloadlen
+                    "Sending PUBLISH (d%d, q%d, r%d, m%d), '%s', properties=%s, '%s' (%d bytes)",
+                    dup, qos, retain, mid, topic, properties, payload, payloadlen
                 )
             else:
                 self._easy_log(
                     MQTT_LOG_DEBUG,
-                    "Sending PUBLISH (d%d, q%d, r%d, m%d), '%s', ... (%d bytes)",
-                    dup, qos, retain, mid, topic, payloadlen
+                    "Sending PUBLISH (d%d, q%d, r%d, m%d), '%s', '%s' (%d bytes)",
+                    dup, qos, retain, mid, topic, payload, payloadlen
                 )
 
         if qos > 0:
@@ -3199,16 +3199,16 @@ class Client(object):
         if self._protocol == MQTTv5:
             self._easy_log(
                 MQTT_LOG_DEBUG,
-                "Received PUBLISH (d%d, q%d, r%d, m%d), '%s', properties=%s, ...  (%d bytes)",
+                "Received PUBLISH (d%d, q%d, r%d, m%d), '%s', properties=%s, '%s'  (%d bytes)",
                 message.dup, message.qos, message.retain, message.mid,
-                print_topic, message.properties, len(message.payload)
+                print_topic, message.properties, message.payload, len(message.payload)
             )
         else:
             self._easy_log(
                 MQTT_LOG_DEBUG,
-                "Received PUBLISH (d%d, q%d, r%d, m%d), '%s', ...  (%d bytes)",
+                "Received PUBLISH (d%d, q%d, r%d, m%d), '%s', '%s'  (%d bytes)",
                 message.dup, message.qos, message.retain, message.mid,
-                print_topic, len(message.payload)
+                print_topic, message.payload, len(message.payload)
             )
 
         message.timestamp = time_func()
