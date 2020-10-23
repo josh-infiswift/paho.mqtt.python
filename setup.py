@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 
 sys.path.insert(0, 'src')
-from paho.mqtt import __version__
+from infipaho.mqtt import __version__
 
 with open('README.rst', 'rb') as readme_file:
     readme = readme_file.read().decode('utf-8')
@@ -20,7 +20,7 @@ if sys.version_info < (3, 0):
     test_requirements += ['mock']
 
 setup(
-    name='paho-mqtt',
+    name='josh-infi-paho-mqtt',
     version=__version__,
     description='MQTT version 5.0/3.1.1 client class',
     long_description=readme,
